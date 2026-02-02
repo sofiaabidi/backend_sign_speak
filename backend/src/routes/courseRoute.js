@@ -1,7 +1,15 @@
 import express from "express";
-import {getCourse} from '../controllers/getCourse.js'
-const router=express.Router();
+import { getCourse } from "../controllers/getCourse.js";
+import authMiddleware from "../middleware/auth.js";
+import requireEnrollment from "../middleware/requireEnrollment.js";
 
-router.get("/:courseId",getCourse)
+const router = express.Router();
+
+router.get(
+  "/:courseId",
+  authMiddleware,
+  requireEnrollment,
+  getCourse
+);
 
 export default router;

@@ -10,7 +10,7 @@ export async function getCourse (req, res) {
   const sections = await Section.find({ courseId })
     .populate("lectures", "title duration");
 
-  res.status(200).res.json({
+  res.status(200).json({
     _id: course._id,
     title: course.title,
     description: course.description,

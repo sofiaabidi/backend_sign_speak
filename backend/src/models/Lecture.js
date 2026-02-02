@@ -1,14 +1,43 @@
 import mongoose from "mongoose";
 
 const lectureSchema = new mongoose.Schema({
-  courseId: { type: mongoose.Schema.Types.ObjectId, ref: "Course" },
-  sectionId: { type: mongoose.Schema.Types.ObjectId, ref: "Section" },
-  title: {
-    type:String,
-    required:true,
+  courseId: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: "Course",
+    required: true
   },
-  duration: String,
-  videoPublicId: String,   // Cloudinary ID
-});
-const Lecture=mongoose.model("Lecture", lectureSchema);
-export default Lecture;
+  sectionId: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: "Section",
+    required: true
+  },
+
+  title: {
+    type: String,
+    required: true
+  },
+
+  description: {
+    type: String, // short explanation of the gesture
+  },
+
+  contentType: {
+    type: String,
+    enum: ["video", "image"],
+    required: true
+  },
+
+  videoPublicId: {
+    type: String,
+    default: null
+  },
+
+  imagePublicId: {
+    type: String,
+    default: null
+  },
+
+  duration: String
+}, { timestamps: true });
+
+export default mongoose.model("Lecture", lectureSchema);

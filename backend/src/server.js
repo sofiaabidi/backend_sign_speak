@@ -6,6 +6,8 @@ import courseRoute from "./routes/courseRoute.js";
 import lectureRoute from "./routes/lectureRoute.js";
 import authRoute from "./routes/authRoute.js";
 import reviewRoute from "./routes/reviewRoute.js";
+import adminRoute from "./routes/adminRoute.js";
+import progressRoute from "./routes/progressRoute.js";
 import { connectDB } from "./config/db.js";
 import { configurePassport } from "./config/passport.js";
 import dotenv from "dotenv";
@@ -34,6 +36,8 @@ app.use("/api/auth", authRoute);
 app.use("/api/courses",courseRoute);
 app.use("/api/lectures",lectureRoute);
 app.use("/api/reviews", reviewRoute);
+app.use("/api/admin", adminRoute);
+app.use("/api/progress", progressRoute);
 
 app.listen(5001,()=>{
     console.log("Server started on Port", PORT);
